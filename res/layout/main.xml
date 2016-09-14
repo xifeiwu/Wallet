@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${packageName}.${activityClass}" >
+  
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"  
+        android:textSize="20sp"  
+        android:layout_alignBaseline="@+id/et_name"  
+        android:text="@string/user_name" />  
+    <!--   
+      android:textSize="20sp"  设置字体大小  
+      android:layout_alignBaseline="@+id/et_name" 让TextView与id=et_name的控件在同水平线上(同一行上)  
+     -->  
+      
+    <EditText  
+        android:id="@+id/et_name"
+        
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+        android:layout_alignParentRight="true"  
+        android:layout_toRightOf="@+id/tv_name"  
+        android:hint="@string/tip_name" />  
+    <!--   
+    android:layout_alignParentRight="true" 子控件针对父容器 右端对齐  
+    android:layout_toRightOf:在控件tv_name的右侧  
+     -->  
+      
+      
+   <TextView  
+        android:id="@+id/tv_pass" 
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+        android:layout_alignBaseline="@+id/et_pass"  
+        android:layout_below="@+id/tv_name"  
+        android:textSize="20sp"  
+        android:text="@string/user_pass" />  
+   <!--  
+    
+      android:layout_below="@+id/tv_name" :位于tv_name控件的下方 
+    -->  
+      
+    <EditText  
+        android:id="@+id/et_pass"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+        android:layout_alignParentRight="true"  
+        android:layout_toRightOf="@+id/tv_pass"  
+        android:layout_below="@+id/et_name"  
+        android:hint="@string/tip_name" />  
+      
+      
+    <Button   
+        android:id="@+id/btn_login"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+        android:layout_marginTop="30dp"  
+        android:layout_below="@+id/tv_pass"  
+        android:onClick="login"  
+        android:text="@string/user_login"/>  
+      
+    <!--  
+       android:layout_marginTop="30dp":该控件的上边距的为30dp大小 
+     -->  
+    <CheckBox   
+        android:id="@+id/chbx_rem"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+        android:layout_alignBaseline="@+id/btn_login"  
+        android:layout_marginLeft="50dp"  
+        android:layout_below="@+id/et_pass"  
+        android:layout_toRightOf="@+id/btn_login"  
+        android:text="@string/user_rem"/>  
+    <!--  
+         android:layout_marginLeft="50dp":该控件的左边距为50dp大小 
+     -->  
+  
+    <TextView   
+        android:id="@+id/tv_result"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"  
+        android:text="@string/tip_result"/>  
+    <!--  
+        android:layout_alignParentBottom="true" :子控件针对父容器 底端对齐 
+     -->
+</RelativeLayout>
