@@ -25,14 +25,15 @@ public class Wallet  extends Activity{
         super.onCreate(savedInstanceState);
         instance = this;
         this.setContentView(R.layout.main);
-        loginBtn = (Button) this.findViewById(R.id.btn_login);
-        etName = (EditText) this.findViewById(R.id.et_name);
-        etPass = (EditText) this.findViewById(R.id.et_pass);
-        loginBtn.setOnClickListener(onLoginListener);
+        this.showMain();
     }
     
     public void showMain() {
         this.setContentView(R.layout.main);
+        loginBtn = (Button) this.findViewById(R.id.btn_login);
+        etName = (EditText) this.findViewById(R.id.et_name);
+        etPass = (EditText) this.findViewById(R.id.et_pass);
+        loginBtn.setOnClickListener(onLoginListener);
     }
 
     private String url = "http://192.168.1.102:8088/login";
@@ -51,8 +52,36 @@ public class Wallet  extends Activity{
         }
     };
 
-
-
+    /*
+     * 数据流post请求  
+     * @param urlStr  
+     * @param xmlInfo  
+     */  
+    public static String doPost(String urlStr, String strInfo) {  
+        String reStr="";  
+        try {  
+            URL url = new URL(urlStr);  
+            URLConnection con = url.openConnection();  
+            con.setDoOutput(true);  
+            con.setRequestProperty("Pragma:", "no-cache");  
+            con.setRequestProperty("Cache-Control", "no-cache");  
+            con.setRequestProperty("Content-Type", "text/xml");  
+            OutputStreamWriter out = new OutputStreamWriter(con.getOutputStream());  
+            out.write(new String(strInfo.getBytes("utf-8")));  
+            out.flush();  
+            out.close();  
+            BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"));  
+            String line = "";  
+            for (line = br.readLine(); line != null; line = br.readLine()) {  
+                reStr += line;  
+            }  
+        } catch (MalformedURLException e) {  
+            e.printStackTrace();  
+        } catch (IOException e) {  
+            e.printStackTrace();  
+        }  
+        return reStr;  
+    }
     /**
      * 向指定 URL 发送POST方法的请求
      * 
