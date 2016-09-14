@@ -154,7 +154,8 @@ public class Wallet  extends Activity{
                 break;
             case 22:
                 if (msg.obj.toString().indexOf("true") > 0) {
-                    tvResult.setText(msg.obj.toString() + "注册成功，用户名：");
+                    tvResult.setText(msg.obj.toString() + "注册成功，用户名：" +
+                        etName.getText().toString() + "密码：" + etPass.getText().toString());
                 } else {
                     tvResult.setText(msg.obj.toString() + "注册失败");
                 }
