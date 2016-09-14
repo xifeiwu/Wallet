@@ -1,12 +1,21 @@
 package study.wallet;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.URL;
+import java.net.URLConnection;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class Wallet  extends Activity{
     private Button loginBtn;
+    private EditText etName, etPass;
     public static Wallet instance;
     private ResultView resultView;
 
@@ -17,6 +26,8 @@ public class Wallet  extends Activity{
         instance = this;
         this.setContentView(R.layout.main);
         loginBtn = (Button) this.findViewById(R.id.btn_login);
+        etName = (EditText) this.findViewById(R.id.et_name);
+        etPass = (EditText) this.findViewById(R.id.et_pass);
         loginBtn.setOnClickListener(onLoginListener);
     }
     
@@ -24,10 +35,15 @@ public class Wallet  extends Activity{
         this.setContentView(R.layout.main);
     }
 
+    private String url = "http://192.168.1.102:8088/login";
+    
     private View.OnClickListener onLoginListener = new View.OnClickListener() {       
         @Override
         public void onClick(View arg0) {
             // TODO Auto-generated method stub
+            String name = etName.getText().toString();
+            String password = etName.getText().toString();
+            String result = instance.sendPost(url, name + ' ' + password);
             if (resultView == null) {
                 resultView = new ResultView(instance);
             }
