@@ -80,6 +80,13 @@
          android:layout_marginLeft="50dp":该控件的左边距为50dp大小 
      -->  
   
+    <Button   
+        android:id="@+id/btn_register"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+        android:layout_marginTop="30dp"
+        android:text="@string/user_register"/>  
+        
     <TextView   
         android:id="@+id/tv_result"  
         android:layout_width="wrap_content"  
