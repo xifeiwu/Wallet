@@ -41,6 +41,7 @@ public class Wallet  extends Activity{
     private TextView tvResult;
     public static Wallet instance;
     private ResultView resultView;
+    private String dstUrl = "http://192.168.1.101:8089/login";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +67,6 @@ public class Wallet  extends Activity{
         }
         this.setContentView(resultView);
     }
-
-    private String dstUrl = "http://192.168.1.101:8089/login";
     
     private View.OnClickListener onLoginListener = new View.OnClickListener() {       
         @Override
