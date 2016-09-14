@@ -32,10 +32,12 @@ import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class Wallet  extends Activity{
     private Button loginBtn;
     private EditText etName, etPass;
+    private TextView tvResult;
     public static Wallet instance;
     private ResultView resultView;
 
@@ -53,6 +55,7 @@ public class Wallet  extends Activity{
         loginBtn = (Button) this.findViewById(R.id.btn_login);
         etName = (EditText) this.findViewById(R.id.et_name);
         etPass = (EditText) this.findViewById(R.id.et_pass);
+        tvResult = (EditText) this.findViewById(R.id.tv_result);
         loginBtn.setOnClickListener(onLoginListener);
     }
     
@@ -106,7 +109,8 @@ public class Wallet  extends Activity{
         public void handleMessage(android.os.Message msg) {
             byte[] data = (byte[])msg.obj;
             if(msg.what == 1){
-                instance.showResultView();
+                // instance.showResultView();
+                tvResult.setText(msg.obj);
             }    
         };
     };
@@ -151,7 +155,6 @@ public class Wallet  extends Activity{
             out.write(new String(strInfo.getBytes("utf-8")));  
             out.flush();  
             out.close();  
-            BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"));  
             String line = "";  
             for (line = br.readLine(); line != null; line = br.readLine()) {  
                 reStr += line;  
