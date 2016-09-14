@@ -9,3 +9,4 @@
 ##代码运行
 1. 可以借助IDE（如Android Studio，Eclipse）部署到手机运行
 2. 也可以直接运行脚本sh restart.sh（需要安装adb和gradle）
+3. 有其它问题随时和我联系
